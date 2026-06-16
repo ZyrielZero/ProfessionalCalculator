@@ -32,9 +32,9 @@ Enter calculations in the form `<operation> <number1> <number2>`:
 
 ```
 >> add 10 5
-Result: AdditionCalculation: 10.0 Addition 5.0 = 15.0
+Result: 10 + 5 = 15
 >> divide 20 4
-Result: DivisionCalculation: 20.0 Division 4.0 = 5.0
+Result: 20 / 4 = 5
 ```
 
 **Supported operations:** `add`, `subtract`, `multiply`, `divide`

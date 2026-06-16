@@ -1,9 +1,17 @@
+"""Interactive REPL for the calculator.
+
+Provides the read-eval-print loop along with help and history display, and
+demonstrates both the LBYL (Look Before You Leap) and EAFP (Easier to Ask
+Forgiveness than Permission) error-handling styles.
+"""
+
 import sys
 from typing import List
 from app.calculation import Calculation, CalculationFactory
 
 
 def display_help() -> None:
+    """Print usage instructions and the supported operations and commands."""
     help_message = """
 Calculator REPL Help
 --------------------
@@ -31,6 +39,11 @@ Examples:
 
 
 def display_history(history: List[Calculation]) -> None:
+    """Print the calculations performed this session.
+
+    Args:
+        history: The list of completed calculations, in order.
+    """
     if not history:
         print("No calculations performed yet.")
     else:
@@ -40,6 +53,13 @@ def display_history(history: List[Calculation]) -> None:
 
 
 def calculator() -> None:
+    """Run the read-eval-print loop until the user exits.
+
+    Each turn reads an operation and two numbers, builds the matching
+    calculation through the factory, prints the result, and records it in the
+    session history. Invalid input, unknown operations, division by zero, and
+    keyboard/EOF interrupts are all handled gracefully.
+    """
     history: List[Calculation] = []
 
     print("Welcome to the Professional Calculator REPL!")

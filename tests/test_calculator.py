@@ -29,7 +29,7 @@ def test_display_history_with_entries(capsys):
     display_history([calc])
     captured = capsys.readouterr()
     assert "Calculation History:" in captured.out
-    assert "1. AdditionCalculation: 8.0 Addition 3.0 = 11.0" in captured.out
+    assert "1. 8 + 3 = 11" in captured.out
 
 
 # ----- Special commands -----
@@ -54,18 +54,18 @@ def test_calculator_history_command(monkeypatch, capsys):
     with pytest.raises(SystemExit):
         calculator()
     captured = capsys.readouterr()
-    assert "Result: AdditionCalculation: 8.0 Addition 3.0 = 11.0" in captured.out
+    assert "Result: 8 + 3 = 11" in captured.out
     assert "Calculation History:" in captured.out
-    assert "1. AdditionCalculation: 8.0 Addition 3.0 = 11.0" in captured.out
+    assert "1. 8 + 3 = 11" in captured.out
 
 
 # ----- Operations -----
 
 @pytest.mark.parametrize("command, expected", [
-    ("add 8 3", "Result: AdditionCalculation: 8.0 Addition 3.0 = 11.0"),
-    ("subtract 8 3", "Result: SubtractionCalculation: 8.0 Subtraction 3.0 = 5.0"),
-    ("multiply 8 3", "Result: MultiplicationCalculation: 8.0 Multiplication 3.0 = 24.0"),
-    ("divide 8 2", "Result: DivisionCalculation: 8.0 Division 2.0 = 4.0"),
+    ("add 8 3", "Result: 8 + 3 = 11"),
+    ("subtract 8 3", "Result: 8 - 3 = 5"),
+    ("multiply 8 3", "Result: 8 * 3 = 24"),
+    ("divide 7 2", "Result: 7 / 2 = 3.5"),
 ])
 def test_calculator_operations(monkeypatch, capsys, command, expected):
     feed_input(monkeypatch, f"{command}\nexit\n")

@@ -98,10 +98,10 @@ def test_division_by_zero_raises():
 # ----- String representation -----
 
 @pytest.mark.parametrize("calc_type, a, b, mock_attr, mock_value, expected", [
-    ("add", 8.0, 3.0, "addition", 11.0, "AdditionCalculation: 8.0 Addition 3.0 = 11.0"),
-    ("subtract", 8.0, 3.0, "subtraction", 5.0, "SubtractionCalculation: 8.0 Subtraction 3.0 = 5.0"),
-    ("multiply", 8.0, 3.0, "multiplication", 24.0, "MultiplicationCalculation: 8.0 Multiplication 3.0 = 24.0"),
-    ("divide", 8.0, 2.0, "division", 4.0, "DivisionCalculation: 8.0 Division 2.0 = 4.0"),
+    ("add", 8.0, 3.0, "addition", 11.0, "8 + 3 = 11"),
+    ("subtract", 8.0, 3.0, "subtraction", 5.0, "8 - 3 = 5"),
+    ("multiply", 8.0, 3.0, "multiplication", 24.0, "8 * 3 = 24"),
+    ("divide", 7.0, 2.0, "division", 3.5, "7 / 2 = 3.5"),
 ])
 def test_str_representation(calc_type, a, b, mock_attr, mock_value, expected):
     with patch.object(Operation, mock_attr, return_value=mock_value):
